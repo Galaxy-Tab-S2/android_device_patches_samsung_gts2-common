@@ -1,0 +1,59 @@
+In gralloc.exynos5.so
+
+function sub_1170 {
+    r1 = arg1;
+    r0 = arg0;
+    r4 = r1;
+    if (((r1 != 0x0) && (*r1 == 0xc)) && (*(r1 + 0x4) + *(r1 + 0x8) == 0x1f)) {
+            r3 = *(r1 + 0x18);
+            if (r3 != 0x3141592) {
+                    __android_log_print();
+                    r0 = 0x15 ^ 0xffffffff;
+            }
+            else {
+                    r2 = 0x3141592;
+                    asm{ ldrd       r2, r3, [r1, #0x50] };
+                    COND = r5 == 0x0;
+                    if (!COND) {
+                            grallocUnmap();
+                    }
+                    r0 = *(r4 + 0xc);
+                    close(r0);
+                    r0 = *(r4 + 0x10);
+                    if (r0 >= 0x0) {
+                            close(r0);
+                    }
+                    r0 = *(r4 + 0x14);
+                    if (r0 >= 0x0) {
+                            close(r0);
+                    }
+                    *(r4 + 0x18) = 0x0;
+                    operator delete();
+                    r0 = 0x0;
+            }
+    }
+    else {
+            __android_log_print();
+            r0 = 0x15 ^ 0xffffffff;
+    }
+    return r0;
+}
+
+To get sNumInts do:
+	
+	sNumInts = 0x1f - sNumFds
+
+diff --git a/include/gralloc_priv.h b/include/gralloc_priv.h
+index 551a543..5ac8cd1 100755
+--- a/include/gralloc_priv.h
++++ b/include/gralloc_priv.h
+@@ -101,7 +101,7 @@ struct private_handle_t {
+ 
+ #ifdef __cplusplus
+     static const int sNumFds = 3;
+-    static const int sNumInts = 24;
++    static const int sNumInts = 28;
+     static const int sMagic = 0x3141592;
+ 
+     private_handle_t(int fd, int size, int flags) :
+
