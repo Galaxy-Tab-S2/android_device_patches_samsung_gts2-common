@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/*=====================================================================*/
+/* WARNING! THIS FILE HAS BEEN PATCHED BY THE gts2-common PATCHER !!!  */
+/*=====================================================================*/
+
 #ifndef GRALLOC_PRIV_H_
 #define GRALLOC_PRIV_H_
 
