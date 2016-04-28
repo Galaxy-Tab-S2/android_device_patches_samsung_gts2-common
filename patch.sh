@@ -10,19 +10,21 @@ function make_patch_stamp
 
 if [ $(cat ${LOCAL_PATH}/PATCHED) = "0" ]; then
 
+	echo "Applying gts2-common patches"
+
 	echo 1 > ${LOCAL_PATH}/PATCHED
 
-	make_patch_stamp 'gralloc_priv.h' ${TOP}/hardware/samsung_slsi-cm_exynos5433/include
+	make_patch_stamp 'gralloc_priv.h' ${TOP}/hardware/samsung_slsi-cm/exynos5433/include
 
-	if [ ! -d ${TOP}/hardware/samsung_slsi-cm_exynos5433/include/.backup ]; then
+	if [ ! -d ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/.backup ]; then
 
-		mkdir ${TOP}/hardware/samsung_slsi-cm_exynos5433/include/.backup
-		echo "THIS DIR CONTAINS UNTOUCHED/UNPATCHED FILES, DO NOT REMOVE! THIS DIR WILL GET REMOVED AUTOMATICALLY IF NECCESSARY" > ${TOP}/hardware/samsung_slsi-cm_exynos5433/include/.backup/README
+		mkdir ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/.backup
+		echo "THIS DIR CONTAINS UNTOUCHED/UNPATCHED FILES, DO NOT REMOVE! THIS DIR WILL GET REMOVED AUTOMATICALLY IF NECCESSARY" > ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/.backup/README
 		
-		mv ${TOP}/hardware/samsung_slsi-cm_exynos5433/include/gralloc_priv.h ${TOP}/hardware/samsung_slsi-cm_exynos5433/include/.backup/gralloc_priv.h.backup
+		mv ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/gralloc_priv.h ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/.backup/gralloc_priv.h.backup
 	
 	fi
 
-	cp ${LOCAL_PATH}/patched/hardware/samsung_slsi-cm_exynos5433/include/gralloc_priv.h ${TOP}/hardware/samsung_slsi-cm_exynos5433/include/
+	cp ${LOCAL_PATH}/patched/hardware/samsung_slsi-cm/exynos5433/include/gralloc_priv.h ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/
 
 fi

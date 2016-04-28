@@ -4,6 +4,8 @@ TOP=$LOCAL_PATH/../../../..
 
 if [ $(cat ${LOCAL_PATH}/PATCHED) = "1" ]; then
     
+    echo "NOT BUILDING gts2-common! REVERTING gts2-common PATCHES!"
+
 	echo 0 > ${LOCAL_PATH}/PATCHED
    
    if [ -f ${TOP}/hardware/samsung_slsi-cm/exynos5433/include/.patchlist ]; then
