@@ -9,10 +9,7 @@ if [ ! -d ${LOCAL_PATH}/patched ]; then
 	mkdir ${PTCH_DIR}
 fi
 
-if [ -d {TOP}/$1 ]; then
-	mkdir -p ${PTCH_DIR}/$1
-else
-	echo "Target dir '$1' not found!"
-fi
+mkdir -p ${PTCH_DIR}/$1
+
 
 cp ${TOP}/$1/$2 ${PTCH_DIR}/$1/
